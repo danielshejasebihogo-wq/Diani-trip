@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diani Trip - Family Vacation</title>
+
+    <!-- ===== ELEGANT FONTS ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,700&family=Great+Vibes&family=Quicksand:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Quicksand', sans-serif;
+            color: #2d3e50;
+            line-height: 1.7;
+            min-height: 100vh;
+            
+            /* ===== YOUR BACKGROUND IMAGE ===== */
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* ===== OVERLAY FOR READABILITY ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(253, 248, 240, 0.88);
+            z-index: 0;
+            backdrop-filter: blur(3px);
+        }
+
+        /* ===== SCROLL PROGRESS BAR ===== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c9a84c, #e8d5a3, #c9a84c);
+            width: 0%;
+            z-index: 999;
+            transition: width 0.1s;
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 30px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER / TITLE ===== */
+        .header {
+            text-align: center;
+            padding: 50px 0 20px;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .header .ornament {
+            font-size: 2rem;
+            color: #c9a84c;
+            letter-spacing: 15px;
+            display: block;
+            margin-bottom: 5px;
+            opacity: 0.7;
+        }
+
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5.5rem;
+            font-weight: 400;
+            background: linear-gradient(135deg, #b8860b, #c9a84c, #e8d5a3, #c9a84c);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientMove 5s ease infinite;
+            letter-spacing: 2px;
+            text-shadow: none;
+            margin-bottom: -5px;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header .subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #b8860b;
+            letter-spacing: 3px;
+            animation: fadeInUp 1.4s ease;
+            opacity: 0.85;
+        }
+
+        .header .palm {
+            font-size: 2.8rem;
+            display: block;
+            margin-top: 8px;
+            animation: float 4s ease-in-out infinite;
+            letter-spacing: 12px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .header .divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: rgba(255, 252, 248, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 55px 35px;
+            text-align: center;
+            margin: 25px 0 40px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.04);
+            animation: fadeInUp 1s ease;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '✦';
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 8rem;
+            color: rgba(201, 168, 76, 0.04);
+            font-family: 'Georgia', serif;
+        }
+
+        .hero::after {
+            content: '✦';
+            position: absolute;
+            bottom: -30px;
+            left: 20px;
+            font-size: 10rem;
+            color: rgba(201, 168, 76, 0.04);
+            font-family: 'Georgia', serif;
+        }
+
+        .hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 60px rgba(201, 168, 76, 0.08);
+        }
+
+        .hero h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #2d3e50;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 span {
+            color: #b8860b;
+            position: relative;
+        }
+
+        .hero h2 span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #c9a84c, #e8d5a3);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            transform-origin: center;
+        }
+
+        .hero:hover h2 span::after {
+            transform: scaleX(1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #4a5f72;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            letter-spacing: 0.3px;
+        }
+
+        .hero .emoji-big {
+            font-size: 3.2rem;
+            display: block;
+            margin-top: 18px;
+            animation: float 3.5s ease-in-out infinite 1s;
+            letter-spacing: 10px;
+        }
+
+        /* ===== INTERACTIVE QUICK STATS ===== */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 40px 0 45px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 252, 248, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 20px 35px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+            cursor: default;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '✦';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 0.8rem;
+            color: #c9a84c;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.08);
+            border-color: #c9a84c;
+        }
+
+        .stat-item .number {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #b8860b;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: #6a7f92;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* ===== GALLERY LINKS ===== */
+        .gallery-section {
+            margin: 50px 0 30px;
+        }
+
+        .gallery-section h3 {
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #2d3e50;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .gallery-section .sub-head {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #8a7a6a;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        .gallery-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .gallery-card {
+            background: rgba(255, 252, 248, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 40px 30px 35px;
+            width: 270px;
+            text-align: center;
+            text-decoration: none;
+            color: #2d3e50;
+            box-shadow: 0 6px 35px rgba(0, 0, 0, 0.04);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s;
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            position: relative;
+        }
+
+        .gallery-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 25px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), transparent, rgba(201, 168, 76, 0.2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .gallery-card:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(201, 168, 76, 0.10);
+            border-color: rgba(201, 168, 76, 0.15);
+        }
+
+        .gallery-card .icon {
+            font-size: 3.8rem;
+            display: block;
+            margin-bottom: 12px;
+            transition: transform 0.5s;
+            letter-spacing: 2px;
+        }
+
+        .gallery-card:hover .icon {
+            transform: scale(1.15) rotate(-3deg);
+        }
+
+        .gallery-card h4 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #2d3e50;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .gallery-card p {
+            color: #6a7f92;
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 18px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* ===== ELEGANT BUTTONS ===== */
+        .btn-explore {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a84c, #b8860b);
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-explore::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .btn-explore:hover::after {
+            opacity: 1;
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.3);
+            background: linear-gradient(135deg, #dbb95c, #c9a84c);
+        }
+
+        .btn-explore:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== CARD-SPECIFIC STYLES ===== */
+        .card-photos {
+            border-top: 3px solid #c9a84c;
+        }
+
+        .card-photos .btn-explore {
+            background: linear-gradient(135deg, #c9a84c, #a8883a);
+        }
+
+        .card-photos .btn-explore:hover {
+            background: linear-gradient(135deg, #dbb95c, #c9a84c);
+            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.3);
+        }
+
+        .card-videos {
+            border-top: 3px solid #b8860b;
+        }
+
+        .card-videos .btn-explore {
+            background: linear-gradient(135deg, #b8860b, #8a6908);
+        }
+
+        .card-videos .btn-explore:hover {
+            background: linear-gradient(135deg, #c9a84c, #b8860b);
+            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.3);
+        }
+
+        /* ===== DESCRIPTION - BOTTOM ===== */
+        .description {
+            background: rgba(255, 252, 248, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 30px 35px;
+            margin: 60px auto 30px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #c9a84c;
+            transition: transform 0.4s, box-shadow 0.4s;
+            max-width: 700px;
+        }
+
+        .description:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 45px rgba(201, 168, 76, 0.06);
+        }
+
+        .description h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #2d3e50;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .description h3 span {
+            color: #b8860b;
+        }
+
+        .description p {
+            font-size: 1.05rem;
+            color: #3d5265;
+            margin-bottom: 6px;
+            line-height: 1.7;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .description .highlight {
+            background: rgba(201, 168, 76, 0.12);
+            padding: 1px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #b8860b;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+        }
+
+        .description .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.3rem;
+            color: #b8860b;
+            margin-top: 8px;
+            text-align: right;
+            opacity: 0.8;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #c9a84c, #b8860b);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(201, 168, 76, 0.25);
+            transition: transform 0.4s, box-shadow 0.4s, opacity 0.4s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+            font-family: 'Georgia', serif;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 45px rgba(201, 168, 76, 0.35);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 0 15px;
+            color: #6a7f92;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.08);
+        }
+
+        .footer .ornament {
+            font-size: 1.5rem;
+            letter-spacing: 15px;
+            color: #c9a84c;
+            display: block;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        .footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .footer .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.2rem;
+            color: #b8860b;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .header h1 {
+                font-size: 3.8rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .stats {
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 15px 22px;
+                min-width: 80px;
+            }
+
+            .stat-item .number {
+                font-size: 2.2rem;
+            }
+
+            .gallery-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-card {
+                width: 100%;
+                max-width: 320px;
+                padding: 30px 25px;
+            }
+
+            .container {
+                padding: 15px 15px 30px;
+            }
+
+            .description {
+                padding: 22px 20px;
+                margin: 40px 0 20px;
+            }
+
+            .description h3 {
+                font-size: 1.3rem;
+            }
+
+            .gallery-section h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            .hero {
+                padding: 30px 15px;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SCROLL PROGRESS BAR ===== -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">✦</button>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <span class="ornament">✦ ✦ ✦</span>
+            <span class="palm">🌴  𓆝  🌊</span>
+            <h1>Diani Trip</h1>
+            <p class="subtitle">✦ Family Vacation ✦</p>
+            <div class="divider"></div>
+        </header>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <h2>Welcome to Our <span>Diani</span> Adventure</h2>
+            <p>Sun, sand, and unforgettable family moments on Kenya's pristine coast.</p>
+            <span class="emoji-big">𓆝  ☀️  🐚  🌺</span>
+        </section>
+
+        <!-- ===== QUICK STATS ===== -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="number">7</span>
+                <span class="label">✦ Days</span>
+            </div>
+            <div class="stat-item">
+                <span class="number">12</span>
+                <span class="label">✦ Souls</span>
+            </div>
+            <div class="stat-item">
+                <span class="number">∞</span>
+                <span class="label">✦ Memories</span>
+            </div>
+        </div>
+
+        <!-- ===== GALLERY LINKS ===== -->
+        <section class="gallery-section">
+            <h3>✦ Cherished Moments ✦</h3>
+            <p class="sub-head">— a collection of our family's treasures —</p>
+            <div class="gallery-grid">
+
+                <!-- ===== PHOTOS CARD ===== -->
+                <div class="gallery-card card-photos">
+                    <span class="icon">𓃥  𓆃</span>
+                    <h4>Photos</h4>
+                    <p>Our favourite snapshots from Diani</p>
+                    <a href="photos.html" class="btn-explore">
+                        ⟡ Explore ⟡
+                    </a>
+                </div>
+
+                <!-- ===== VIDEOS CARD ===== -->
+                <div class="gallery-card card-videos">
+                    <span class="icon">𓆱  𓃹</span>
+                    <h4>Videos</h4>
+                    <p>Memories in motion, moments alive</p>
+                    <a href="videos.html" class="btn-explore">
+                        ⟡ Watch ⟡
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== DESCRIPTION - BOTTOM ===== -->
+        <section class="description">
+            <h3>✦ About <span>This Website</span></h3>
+            <p>
+                Welcome to our family's <span class="highlight">Diani Beach</span> memory book — 
+                a curated collection of our most cherished moments from our journey to 
+                <strong>Diani, Kenya</strong>, where the ocean meets paradise.
+            </p>
+            <p>
+                Here you'll discover our <strong>photographs</strong> — each frame holding a story, 
+                and <strong>videos</strong> — capturing the laughter, the sunsets, and the pure 
+                joy of family togetherness by the Indian Ocean.
+            </p>
+            <p style="font-style: italic; color: #8a7a6a; margin-top: 6px;">
+                𓆝 Made with love, for the ones who made it magical.
+            </p>
+            <div class="signature">— forever Diani</div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <span class="ornament">✦ ✦ ✦ ✦ ✦</span>
+            <p>© 2026 Diani Trip · Family Memories · Kenya</p>
+            <div class="signature">✦ with love, sand & sunshine ✦</div>
+        </footer>
+
+    </div>
+
+    <!-- ===== JAVASCRIPT FOR INTERACTIVITY ===== -->
+    <script>
+        // ===== SCROLL PROGRESS BAR =====
+        const progressBar = document.getElementById('progressBar');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ===== SMOOTH REVEAL ON SCROLL =====
+        const cards = document.querySelectorAll('.gallery-card, .stat-item, .description, .hero');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(card);
+        });
+
+        setTimeout(() => {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        }, 200);
+    </script>
+
+</body>
+</html>
